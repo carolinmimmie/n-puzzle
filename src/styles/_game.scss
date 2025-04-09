@@ -1,0 +1,18 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+
+  &__board {
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-gap: 10px;
+    background-color: #f7a5ca;
+    padding: 10px;
+    border-radius: 16px;
+  }
+}

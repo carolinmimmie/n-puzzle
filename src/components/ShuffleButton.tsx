@@ -1,5 +1,5 @@
 const ShuffleButton = () => {
-  return <div>ShuffleButton</div>;
+  return <button>ShuffleButton</button>;
 };
 
 export default ShuffleButton;
