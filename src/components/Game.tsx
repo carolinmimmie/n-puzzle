@@ -19,6 +19,18 @@ const Game = () => {
     generateGameArray(rows, columns)
   );
 
+  const shuffleTiles = () => {
+    const shuffled = [...gameArray];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const randomIndex = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[randomIndex]] = [
+        shuffled[randomIndex],
+        shuffled[i],
+      ];
+    }
+    setGameArray(shuffled);
+  };
+
   return (
     <div className="game">
       <div className="game__board">
@@ -26,7 +38,7 @@ const Game = () => {
           <Tile key={index} value={value}></Tile>
         ))}
       </div>
-      <ShuffleButton></ShuffleButton>
+      <ShuffleButton shuffleTiles={shuffleTiles}></ShuffleButton>
 
       {/* <WinMessage></WinMessage> */}
     </div>
