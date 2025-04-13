@@ -105,7 +105,6 @@ const Game = () => {
         ))}
       </div>
       <ShuffleButton shuffleTiles={shuffleTiles}></ShuffleButton>
-
       {isWinning && <WinMessage shuffleTiles={shuffleTiles}></WinMessage>}
     </div>
   );

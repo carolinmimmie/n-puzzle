@@ -12,14 +12,17 @@
   z-index: 1000;
 
   &__container {
-    width: 65%;
     display: flex;
     flex-direction: column;
     gap: 12px;
     color: v.$white;
     background: v.$mint;
     padding: 26px;
-    border-radius: 10px;
+    border-radius: v.$border-radius;
     text-align: center;
+    h2 {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
   }
 }

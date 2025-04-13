@@ -1,13 +1,18 @@
 @use "variables" as v;
+@use "mixins" as m;
 button {
   background-color: v.$teal;
   color: v.$white;
   border: none;
-  padding: 15px 25px;
-  font-size: 16px;
-  border-radius: 5px;
+  padding: 16px 25px;
+  font-size: 18px;
+  text-transform: uppercase;
+  border-radius: v.$border-radius;
   cursor: pointer;
-  width: 100%;
+  width: 340px;
+  @include m.forSize(desktop) {
+    width: 565px;
+  }
 }
 button:hover {
   background-color: v.$dark-teal;

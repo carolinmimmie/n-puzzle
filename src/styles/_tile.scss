@@ -8,7 +8,7 @@
   background-color: v.$teal;
   color: v.$white;
   font-size: 24px;
-  border-radius: 8px;
+  border-radius: v.$border-radius;
   text-align: center;
 }
 .hidden-tile {
