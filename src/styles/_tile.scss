@@ -1,11 +1,12 @@
+@use "variables" as v;
 .tile {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100px;
   height: 100px;
-  background-color: #ff7eb0;
-  color: #f7ecc6;
+  background-color: v.$teal;
+  color: v.$white;
   font-size: 24px;
   border-radius: 8px;
   text-align: center;

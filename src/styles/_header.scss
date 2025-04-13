@@ -1,7 +1,8 @@
+@use "variables" as v;
 .header {
   text-align: center;
   text-transform: uppercase;
-  color: #b7dea1;
+  color: v.$dark-teal;
   font-size: 3rem;
   padding: 16px;
 }

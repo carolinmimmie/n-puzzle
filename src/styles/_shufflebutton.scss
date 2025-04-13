@@ -1,16 +1,14 @@
+@use "variables" as v;
 button {
-  background-color: #2a2f45;
-  color: #b7dea1;
+  background-color: v.$teal;
+  color: v.$white;
   border: none;
   padding: 15px 25px;
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  width: 550px;
+  width: 100%;
 }
 button:hover {
-  background-color: #b7dea1;
-  color: #2a2f45;
-  transform: scale(1.05);
+  background-color: v.$dark-teal;
 }

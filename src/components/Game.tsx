@@ -26,6 +26,7 @@ const Game = () => {
   const shuffleTiles = () => {
     const shuffled = [...gameArray].sort(() => Math.random() - 0.5);
     setGameArray(shuffled);
+    setIsWinning(false);
   };
   const handleTileClick = (index: number) => {
     const emptyTileIndex = gameArray.findIndex((value) => value === 0);
@@ -105,7 +106,7 @@ const Game = () => {
       </div>
       <ShuffleButton shuffleTiles={shuffleTiles}></ShuffleButton>
 
-      {isWinning && <WinMessage></WinMessage>}
+      {isWinning && <WinMessage shuffleTiles={shuffleTiles}></WinMessage>}
     </div>
   );
 };
