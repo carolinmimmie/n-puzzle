@@ -1,11 +1,12 @@
+import { GAME_SETTINGS } from "../config";
 import { useState } from "react";
 import ShuffleButton from "./ShuffleButton";
 import Tile from "./Tile";
 import WinMessage from "./WinMessage";
 
 const Game = () => {
-  const rows = 3;
-  const columns = 5;
+  const rows = GAME_SETTINGS.rows;
+  const columns = GAME_SETTINGS.columns;
 
   const generateGameArray = (rows: number, columns: number) => {
     const array = [];
