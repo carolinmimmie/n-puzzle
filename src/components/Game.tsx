@@ -28,20 +28,48 @@ const Game = () => {
   };
   const handleTileClick = (index: number) => {
     const emptyTileIndex = gameArray.findIndex((value) => value === 0);
-
     if (emptyTileIndex === -1) return;
 
-    const clickedRow = Math.floor(index / columns);
-    const clickedCol = index % columns;
+    const clickedTileRow = Math.floor(index / columns);
+    const clickedTileCol = index % columns;
+    console.log(clickedTileCol);
+    console.log(clickedTileRow);
 
-    const emptyRow = Math.floor(emptyTileIndex / columns);
-    const emptyCol = emptyTileIndex % columns;
+    const emptyTileRow = Math.floor(emptyTileIndex / columns);
+    const emptyTileCol = emptyTileIndex % columns;
 
-    if (clickedRow === emptyRow || clickedCol === emptyCol) {
+    if (clickedTileRow === emptyTileRow || clickedTileCol === emptyTileCol) {
       const newGameArray = [...gameArray];
-      newGameArray[emptyTileIndex] = newGameArray[index];
-      newGameArray[index] = 0;
 
+      const emptyTileValue = newGameArray[emptyTileIndex];
+      console.log("tommarutansindex" + emptyTileIndex);
+
+      if (clickedTileRow === emptyTileRow) {
+        if (index < emptyTileIndex) {
+          for (let i = emptyTileIndex; i > index; i--) {
+            newGameArray[i] = newGameArray[i - 1];
+          }
+        } else {
+          for (let i = emptyTileIndex; i < index; i++) {
+            newGameArray[i] = newGameArray[i + 1];
+          }
+        }
+      } else if (clickedTileCol === emptyTileCol) {
+        if (index < emptyTileIndex) {
+          for (let i = emptyTileIndex; i > index; i -= columns) {
+            newGameArray[i] = newGameArray[i - columns];
+          }
+        } else {
+          for (let i = emptyTileIndex; i < index; i += columns) {
+            newGameArray[i] = newGameArray[i + columns];
+          }
+        }
+      }
+
+      newGameArray[index] = emptyTileValue;
+      console.log(
+        "Den tomma rutan har blivit flyttat till index " + newGameArray[index]
+      );
       setGameArray(newGameArray);
       setTimeout(() => {
         handleWinCheck(newGameArray);
