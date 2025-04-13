@@ -1,5 +1,5 @@
 const WinMessage = () => {
-  return <div>WinMessage</div>;
+  return <div>You won</div>;
 };
 
 export default WinMessage;

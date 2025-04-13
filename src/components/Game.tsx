@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ShuffleButton from "./ShuffleButton";
 import Tile from "./Tile";
+import WinMessage from "./WinMessage";
 
 const Game = () => {
   const rows = 3;
@@ -8,23 +9,27 @@ const Game = () => {
 
   const generateGameArray = (rows: number, columns: number) => {
     const array = [];
-    for (let i = 0; i < rows * columns; i++) {
+    for (let i = 1; i < rows * columns; i++) {
       array.push(i);
     }
+    array.push(0);
+
     return array;
   };
 
   const [gameArray, setGameArray] = useState(() =>
     generateGameArray(rows, columns)
   );
-  console.log(gameArray);
+  const [isWinning, setIsWinning] = useState(false);
 
   const shuffleTiles = () => {
     const shuffled = [...gameArray].sort(() => Math.random() - 0.5);
     setGameArray(shuffled);
   };
   const handleTileClick = (index: number) => {
-    const emptyTileIndex = gameArray.indexOf(0);
+    const emptyTileIndex = gameArray.findIndex((value) => value === 0);
+
+    if (emptyTileIndex === -1) return;
 
     const clickedRow = Math.floor(index / columns);
     const clickedCol = index % columns;
@@ -38,7 +43,20 @@ const Game = () => {
       newGameArray[index] = 0;
 
       setGameArray(newGameArray);
+      setTimeout(() => {
+        handleWinCheck(newGameArray);
+      }, 0);
     }
+  };
+
+  const handleWinCheck = (gameArray: number[]) => {
+    const isWinning = gameArray.every((value, index) => {
+      if (value === 0) {
+        return true;
+      }
+      return value === index + 1;
+    });
+    setIsWinning(isWinning);
   };
 
   return (
@@ -57,7 +75,7 @@ const Game = () => {
       </div>
       <ShuffleButton shuffleTiles={shuffleTiles}></ShuffleButton>
 
-      {/* <WinMessage></WinMessage> */}
+      {isWinning && <WinMessage></WinMessage>}
     </div>
   );
 };
