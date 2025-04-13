@@ -1,8 +1,8 @@
 import { GAME_SETTINGS } from "../config";
 import { useState } from "react";
-import ShuffleButton from "./ShuffleButton";
 import Tile from "./Tile";
 import WinMessage from "./WinMessage";
+import Button from "./Button";
 
 const Game = () => {
   const rows = GAME_SETTINGS.rows;
@@ -104,7 +104,7 @@ const Game = () => {
           ></Tile>
         ))}
       </div>
-      <ShuffleButton shuffleTiles={shuffleTiles}></ShuffleButton>
+      <Button shuffleTiles={shuffleTiles}>Mix it up!</Button>
       {isWinning && <WinMessage shuffleTiles={shuffleTiles}></WinMessage>}
     </div>
   );

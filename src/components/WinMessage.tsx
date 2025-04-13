@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { GiPartyPopper } from "react-icons/gi";
+import Button from "./Button";
 interface IWinMessage {
   shuffleTiles: () => void;
 }
@@ -22,7 +23,7 @@ const WinMessage = ({ shuffleTiles }: IWinMessage) => {
           Congrats! <GiPartyPopper />
         </h2>
         <p>You solved the puzzle!</p>
-        <button onClick={shuffleTiles}>Play again</button>
+        <Button shuffleTiles={shuffleTiles}>Play again!</Button>
       </motion.div>
     </motion.div>
   );
