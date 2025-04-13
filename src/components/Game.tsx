@@ -79,11 +79,12 @@ const Game = () => {
 
   const handleWinCheck = (gameArray: number[]) => {
     const isWinning = gameArray.every((value, index) => {
-      if (value === 0) {
-        return true;
+      if (index === gameArray.length - 1) {
+        return value === 0;
       }
       return value === index + 1;
     });
+
     setIsWinning(isWinning);
   };
 
