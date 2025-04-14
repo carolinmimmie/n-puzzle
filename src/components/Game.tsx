@@ -1,5 +1,5 @@
 import { GAME_SETTINGS } from "../config";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Tile from "./Tile";
 import WinMessage from "./WinMessage";
 import Button from "./Button";
@@ -17,10 +17,13 @@ const Game = () => {
 
     return array;
   };
+  const [gameArray, setGameArray] = useState<number[]>([]);
 
-  const [gameArray, setGameArray] = useState(() =>
-    generateGameArray(rows, columns)
-  );
+  useEffect(() => {
+    const newArray = generateGameArray(rows, columns);
+    const shuffled = [...newArray].sort(() => Math.random() - 0.5);
+    setGameArray(shuffled);
+  }, [rows, columns]);
   const [isWinning, setIsWinning] = useState(false);
 
   const shuffleTiles = () => {
@@ -92,7 +95,12 @@ const Game = () => {
 
   return (
     <div className="game">
-      <div className="game__board">
+      <div
+        className="game__board"
+        style={{
+          gridTemplateColumns: `repeat(${columns}, 1fr)`,
+        }}
+      >
         {gameArray.map((value, index) => (
           <Tile
             key={index}

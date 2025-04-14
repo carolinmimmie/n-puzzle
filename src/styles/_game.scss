@@ -10,13 +10,15 @@
 
   &__board {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
     grid-gap: 10px;
     background-color: v.$mint;
     padding: 10px;
     border-radius: v.$border-radius;
     @include m.forSize(desktop) {
-      grid-template-columns: repeat(5, 100px);
+      max-width: 500px;
     }
   }
 }
