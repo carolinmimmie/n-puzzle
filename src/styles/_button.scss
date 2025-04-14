@@ -1,5 +1,6 @@
 @use "variables" as v;
 @use "mixins" as m;
+
 button {
   background-color: v.$teal;
   color: v.$white;
@@ -10,11 +11,13 @@ button {
   border-radius: v.$border-radius;
   cursor: pointer;
   width: 320px;
+
   @include m.forSize(desktop) {
     width: 520px;
     padding: 16px 25px;
   }
 }
+
 button:hover {
   background-color: v.$dark-teal;
 }

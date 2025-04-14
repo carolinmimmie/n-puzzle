@@ -1,4 +1,5 @@
 @use "variables" as v;
+
 .winmessage {
   background-color: v.$beige;
   position: fixed;
@@ -20,6 +21,7 @@
     padding: 26px;
     border-radius: v.$border-radius;
     text-align: center;
+
     h2 {
       text-transform: uppercase;
       letter-spacing: 3px;

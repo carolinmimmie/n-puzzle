@@ -1,5 +1,6 @@
 @use "variables" as v;
 @use "mixins" as m;
+
 .game {
   display: flex;
   flex-direction: column;
@@ -15,10 +16,11 @@
     padding: 10px;
     grid-gap: 10px;
     background-color: v.$mint;
-    padding: 10px;
     border-radius: v.$border-radius;
+
     @include m.forSize(desktop) {
       max-width: 500px;
     }
   }
 }
+

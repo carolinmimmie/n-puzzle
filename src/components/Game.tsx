@@ -14,40 +14,36 @@ const Game = () => {
       array.push(i);
     }
     array.push(0);
-
     return array;
   };
+
   const [gameArray, setGameArray] = useState<number[]>([]);
+  const [isWinning, setIsWinning] = useState(false);
 
   useEffect(() => {
     const newArray = generateGameArray(rows, columns);
     const shuffled = [...newArray].sort(() => Math.random() - 0.5);
     setGameArray(shuffled);
   }, [rows, columns]);
-  const [isWinning, setIsWinning] = useState(false);
 
   const shuffleTiles = () => {
     const shuffled = [...gameArray].sort(() => Math.random() - 0.5);
     setGameArray(shuffled);
     setIsWinning(false);
   };
+
   const handleTileClick = (index: number) => {
     const emptyTileIndex = gameArray.findIndex((value) => value === 0);
     if (emptyTileIndex === -1) return;
 
     const clickedTileRow = Math.floor(index / columns);
     const clickedTileCol = index % columns;
-    console.log(clickedTileCol);
-    console.log(clickedTileRow);
-
     const emptyTileRow = Math.floor(emptyTileIndex / columns);
     const emptyTileCol = emptyTileIndex % columns;
 
     if (clickedTileRow === emptyTileRow || clickedTileCol === emptyTileCol) {
       const newGameArray = [...gameArray];
-
       const emptyTileValue = newGameArray[emptyTileIndex];
-      console.log("tommarutansindex" + emptyTileIndex);
 
       if (clickedTileRow === emptyTileRow) {
         if (index < emptyTileIndex) {
@@ -72,9 +68,6 @@ const Game = () => {
       }
 
       newGameArray[index] = emptyTileValue;
-      console.log(
-        "Den tomma rutan har blivit flyttat till index " + newGameArray[index]
-      );
       setGameArray(newGameArray);
       setTimeout(() => {
         handleWinCheck(newGameArray);
@@ -105,15 +98,12 @@ const Game = () => {
           <Tile
             key={index}
             value={value}
-            handleTileClick={() => {
-              console.log("Clicked index:", index, "value:", value);
-              handleTileClick(index);
-            }}
-          ></Tile>
+            handleTileClick={() => handleTileClick(index)}
+          />
         ))}
       </div>
       <Button shuffleTiles={shuffleTiles}>Mix it up!</Button>
-      {isWinning && <WinMessage shuffleTiles={shuffleTiles}></WinMessage>}
+      {isWinning && <WinMessage shuffleTiles={shuffleTiles} />}
     </div>
   );
 };

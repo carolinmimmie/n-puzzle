@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { GiPartyPopper } from "react-icons/gi";
 import Button from "./Button";
+
 interface IWinMessage {
   shuffleTiles: () => void;
 }
+
 const WinMessage = ({ shuffleTiles }: IWinMessage) => {
   return (
     <motion.div
